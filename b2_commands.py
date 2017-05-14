@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 import os
 #
-# This class contains functions to perform common api calls to backblaze b2
+# Call these functions to perform common API calls to B2
 #
 
-
-#
-# Example Variables
-#
+# Example Variables:
 # local_dir = str('/mnt/data')
 # bucket = str('remote:bucket')
 #

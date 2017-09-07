@@ -12,6 +12,7 @@
 
 if pidof -o %PPID -x "team-backup.sh"; then
 echo "backup already running"
+logger Rclone tried to backup, already running. 
 exit 1
 fi
 rclone copy /<source> <remote_name>:<bucket_name> \
@@ -21,4 +22,5 @@ rclone copy /<source> <remote_name>:<bucket_name> \
 --fast-list \
 --verbose \
 --syslog
+logger Rclone backup Finished
 exit

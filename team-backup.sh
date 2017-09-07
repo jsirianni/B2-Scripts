@@ -15,6 +15,7 @@ echo "backup already running"
 logger Rclone tried to backup, already running. 
 exit 1
 fi
+logger Rclone backup started
 rclone copy /<source> <remote_name>:<bucket_name> \
 --transfers=8 \
 --buffer-size=25M \

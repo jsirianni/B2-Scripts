@@ -14,19 +14,18 @@
 # $1 = source (directory or remote_name:bucket_name)
 # $2 = destination (directory or remote_name:bucket_name)
 # Example
-# ./team-backup-freenas.sh /mnt/data myremotename:bucketname
+# ./team-backup.sh /mnt/data myremotename:bucketname
 
-if pgrep rclone; then
+if pidof -o %PPID -x "team-backup.sh"; then
 echo "backup already running"
 logger Rclone tried to backup, already running.
 exit 1
 fi
 
 logger Rclone backup started
-/usr/local/bin/rclone copy $1 $2 \
+rclone copy $1 $2 \
 --transfers=8 \
 --buffer-size=25M \
---bwlimit "08:00,0.25M 18:00,0.625M" \
 --fast-list \
 --verbose \
 --syslog
